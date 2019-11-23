@@ -1,0 +1,74 @@
+package Lcm;
+import java.util.*;
+public class reversedoublylinklist
+{
+	static node head; 
+	static class node
+	{
+		int data;
+		node pre;
+		node next;
+		node(int d)
+		{
+			data=d;
+			next=null;
+			pre=null;
+		}
+	}
+	public static reversedoublylinklist addbeg(reversedoublylinklist l1,int ele)
+	{
+		node n1=new node(ele);
+		if(l1.head==null)
+		{
+			l1.head=n1;
+		}
+		else
+		{
+			node last=l1.head;
+			while(last.next!=null)
+			{
+				last=last.next;
+			}
+			last.next=n1;
+			n1.pre=last;
+		}
+		return l1;
+	}
+	public static void display(reversedoublylinklist l1)
+	{
+		node last=l1.head;
+		node pre1=null;
+		if(l1.head==null)
+		{
+			System.out.println("list is empty");
+		}
+		else
+		{
+		while(last!=null)
+		{
+			pre1=last;
+			last=last.next;
+	    }
+		System.out.println("IN REVERSE ORDER :");
+		while(pre1!=null)
+		{
+			System.out.print(pre1.data+" ");
+			pre1=pre1.pre;
+		}
+		}
+	}
+	public static void main(String arg[])
+	{
+		reversedoublylinklist l1=new reversedoublylinklist();
+		Scanner in=new Scanner(System.in);
+		int size=in.nextInt();
+		for(int i=0;i<size;i++)
+		{
+			int ele=in.nextInt();
+			addbeg(l1,ele);
+		}
+		display(l1);
+	}
+	}
+
+
